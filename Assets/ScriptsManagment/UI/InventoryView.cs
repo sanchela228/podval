@@ -14,6 +14,7 @@ public class InventoryView : MonoBehaviour
 
     void Start()
     {
+        // test
 
         if (TargetInventory.Helmet != null)
 		{
