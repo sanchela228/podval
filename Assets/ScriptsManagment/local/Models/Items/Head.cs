@@ -6,7 +6,6 @@ namespace Models.Items
     public class Head : Item
     {
         public int Health;
-
         public int Armor;
     }
 }

@@ -9,12 +9,7 @@ namespace DataBase
     public class Base
     {
         List<Item> itemList;
-
-
     }
-
-       
-
 }
 
 
