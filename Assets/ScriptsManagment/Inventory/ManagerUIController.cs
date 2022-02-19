@@ -17,11 +17,16 @@ public class ManagerUIController : MonoBehaviour
 
     void Update()
     {
-        var Manager = new XMLManager();
-
         if (Input.GetKeyUp(KeyCode.I)) VisibleUI("InventoryUI");
 
-        if (Input.GetKeyUp(KeyCode.L)) Manager.Save();
+        if (Input.GetKeyUp(KeyCode.L)) Test();
+    }
+
+    public void Test()
+    {
+        var Manager = new XMLManager();
+
+        Manager.SetProperty("level", "test");
     }
 
     public void VisibleUI(string Name)
