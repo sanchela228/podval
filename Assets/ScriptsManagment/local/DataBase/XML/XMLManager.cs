@@ -10,14 +10,22 @@ namespace DataBase.XML
     [System.Serializable]
     public class XMLManager : Singleton
     {
-        // Singleton extension "of"course 
-        // xml working
-        public void test()
+        public XMLUser _userData;
+
+        public void Save()
         {
-            var instance = XMLManager.GetInstance();
+            XmlSerializer serializer = new XmlSerializer(typeof(XMLUser));
+
+            FileStream stream = new FileStream(Application.dataPath + "/XMLData/UserData.xml", FileMode.Create);
+            serializer.Serialize(stream, _userData); 
+            stream.Close();
         }
 
-        
+        public void Read()
+        {
+            
+            
+        }
     }
 
 
