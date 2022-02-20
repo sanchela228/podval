@@ -39,3 +39,4 @@ Logs/*
 *.Logs/
 /[Ll]ogs/
 *.log
+Logs/shadercompiler-UnityShaderCompiler.exe0.log
