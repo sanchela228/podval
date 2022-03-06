@@ -1,0 +1,5 @@
+
+interface IXMLData
+{
+    void Process();
+}

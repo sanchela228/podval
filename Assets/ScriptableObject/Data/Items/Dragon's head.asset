@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f421b195a693c964c9050070e20744a6, type: 3}
-  m_Name: gfddf
+  m_Name: Dragon's head
   m_EditorClassIdentifier: 
-  Id: 9a812613-ffff-4fca-88aa-15c7d54daacb
-  Name: 
-  Icon: {fileID: 0}
+  Id: 7d38ddb5-7ecb-4df6-aa96-4e51adf701b4
+  Name: Dragon's head
+  Icon: {fileID: 21300000, guid: 68899b3224bf7044bbadc7d907a1291e, type: 3}
   _isUserProperty: 0
-  Type: {fileID: 0}
+  Type: {fileID: 11400000, guid: 588c8cad640966a47b963e2afb52caa1, type: 2}
   Description: 
-  Health: 0
-  Armor: 0
+  Health: 10
+  Armor: 10

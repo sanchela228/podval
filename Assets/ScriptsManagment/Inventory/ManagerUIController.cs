@@ -32,9 +32,8 @@ public class ManagerUIController : MonoBehaviour
     public void VisibleUI(string Name)
     {
         var UI = ListUI.Find(b => b.name == Name);
-        var status = UI.activeSelf;
 
-        if (status) UI.SetActive(false);
+        if (UI.activeSelf) UI.SetActive(false);
         else UI.SetActive(true);
     }
 }
