@@ -1,4 +1,7 @@
 <?xml version="1.0"?>
 <user>
-  <level>test</level>
+	<level>1</level>
+	<name>alex</name>
+	<head></head>
+	<body></body>
 </user>
