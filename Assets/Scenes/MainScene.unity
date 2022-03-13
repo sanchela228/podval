@@ -637,7 +637,7 @@ SpriteRenderer:
   m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -848,7 +848,7 @@ SpriteRenderer:
   m_Color: {r: 0.6415094, g: 0.6415094, b: 0.6415094, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
+  m_DrawMode: 1
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActiveSlot: 1
   Type: {fileID: 11400000, guid: f4c24f70f762b0f4196e78ac7bfd7ab7, type: 2}
-  Item: {fileID: 0}
+  Item: {fileID: 11400000, guid: e5e74ad5164be1f47b0645359ef42a86, type: 2}
 --- !u!1 &2079752201
 GameObject:
   m_ObjectHideFlags: 0
