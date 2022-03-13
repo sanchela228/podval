@@ -8,7 +8,12 @@ namespace DataBase
 {
     public class Base
     {
-        List<Item> itemList;
+        public static List<Item> itemList;
+
+        public static List<Item> GetItemsList()
+        { 
+            return itemList;
+        }
     }
 }
 

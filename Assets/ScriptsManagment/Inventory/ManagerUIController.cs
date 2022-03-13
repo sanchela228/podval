@@ -1,3 +1,5 @@
+using Models;
+using DataBase;
 using DataBase.XML;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,12 +9,26 @@ public class ManagerUIController : MonoBehaviour
 {
     private List<GameObject> ListUI = new List<GameObject>();
 
-	void Start()
+    public ItemsDataBase ItemsList;
+
+    void Start()
     {
         var Inventory = GameObject.Find("InventoryUI");
         ListUI.Add(Inventory);
 
         Inventory.SetActive(false);
+
+
+        #region LoadXML Data
+        var test = Utils.CamelCaseToLowerString("Items_DataManager");
+        //var test = Resources.FindObjectsOfTypeAll<ItemsDataBase>();
+        //ItemsList = ItemsBase.listItem;
+
+
+        Debug.Log(test);
+        Debug.Log(ItemsList);
+
+        #endregion
     }
 
     void Update()
