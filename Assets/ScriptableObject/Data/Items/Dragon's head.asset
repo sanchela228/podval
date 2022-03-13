@@ -17,6 +17,6 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 68899b3224bf7044bbadc7d907a1291e, type: 3}
   _isUserProperty: 0
   Type: {fileID: 11400000, guid: 588c8cad640966a47b963e2afb52caa1, type: 2}
-  Description: 
+  Description: head..
   Health: 10
   Armor: 10

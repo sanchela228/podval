@@ -571,7 +571,6 @@ GameObject:
   m_Component:
   - component: {fileID: 803733361}
   - component: {fileID: 803733362}
-  - component: {fileID: 803733363}
   - component: {fileID: 803733364}
   m_Layer: 5
   m_Name: Head
@@ -645,19 +644,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &803733363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803733360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6832b34f3bb222746baf84d9019bb7da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: {fileID: 11400000, guid: 588c8cad640966a47b963e2afb52caa1, type: 2}
 --- !u!114 &803733364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,7 +656,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6832b34f3bb222746baf84d9019bb7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveSlot: 1
   Type: {fileID: 11400000, guid: 588c8cad640966a47b963e2afb52caa1, type: 2}
+  Item: {fileID: 11400000, guid: 5e600355a83d7464a8025c85e9dd1515, type: 2}
 --- !u!1 &1144988021
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +783,6 @@ GameObject:
   - component: {fileID: 1240139328}
   - component: {fileID: 1240139329}
   - component: {fileID: 1240139330}
-  - component: {fileID: 1240139331}
   m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
@@ -880,20 +867,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6832b34f3bb222746baf84d9019bb7da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActiveSlot: 1
   Type: {fileID: 11400000, guid: f4c24f70f762b0f4196e78ac7bfd7ab7, type: 2}
---- !u!114 &1240139331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1240139327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6832b34f3bb222746baf84d9019bb7da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: {fileID: 11400000, guid: f4c24f70f762b0f4196e78ac7bfd7ab7, type: 2}
+  Item: {fileID: 0}
 --- !u!1 &2079752201
 GameObject:
   m_ObjectHideFlags: 0
