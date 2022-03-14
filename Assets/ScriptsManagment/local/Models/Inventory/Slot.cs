@@ -10,19 +10,25 @@ namespace Models.Inventory
 
         public TypesItem Type;
         public Item Item;
+        public Sprite SpriteDefault;
 
-        protected SpriteRenderer _spriteSlot;
+        protected SpriteRenderer spriteSlot;
+     
 
         private void Start()
         {
-            _spriteSlot = GetComponent<SpriteRenderer>();
+            spriteSlot = GetComponent<SpriteRenderer>();
         }
 
         void OnGUI()
         {
-            if (Item != null)
+            if (Item != null && Item.Icon != SpriteDefault)
             {
-                if (Item.Icon != null) _spriteSlot.sprite = Item.Icon;
+                if (Item.Icon != null) spriteSlot.sprite = Item.Icon;
+            }
+            else
+            {
+                spriteSlot.sprite = SpriteDefault;
             }
 
             

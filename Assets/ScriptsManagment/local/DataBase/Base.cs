@@ -8,12 +8,7 @@ namespace DataBase
 {
     public class Base
     {
-        public static List<Item> itemList;
-
-        public static List<Item> GetItemsList()
-        { 
-            return itemList;
-        }
+       // здесь нужно будет настроить работу с объектами хранения и их получения
     }
 }
 

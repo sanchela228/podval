@@ -530,10 +530,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380bb430863a1894e8c2ff488a2a78ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetInventory: {fileID: 122488186}
-  ItemsPanel: {fileID: 0}
   Head: {fileID: 803733360}
   Body: {fileID: 1240139327}
+  ItemsDataBase: {fileID: 11400000, guid: b202fe346b03140418d4d4e30c17b781, type: 2}
 --- !u!224 &556619340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -660,7 +659,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActiveSlot: 1
   Type: {fileID: 11400000, guid: 588c8cad640966a47b963e2afb52caa1, type: 2}
-  Item: {fileID: 11400000, guid: 5e600355a83d7464a8025c85e9dd1515, type: 2}
+  Item: {fileID: 0}
+  SpriteDefault: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1144988021
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,7 +872,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActiveSlot: 1
   Type: {fileID: 11400000, guid: f4c24f70f762b0f4196e78ac7bfd7ab7, type: 2}
-  Item: {fileID: 11400000, guid: e5e74ad5164be1f47b0645359ef42a86, type: 2}
+  Item: {fileID: 0}
+  SpriteDefault: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &2079752201
 GameObject:
   m_ObjectHideFlags: 0
