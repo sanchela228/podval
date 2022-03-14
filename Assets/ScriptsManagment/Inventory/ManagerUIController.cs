@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class ManagerUIController : MonoBehaviour
 {
-    private List<GameObject> ListUI = new List<GameObject>();
-
     public ItemsDataBase ItemsList;
+
+    private List<GameObject> ListUI = new List<GameObject>();
 
     void Start()
     {
@@ -18,17 +18,6 @@ public class ManagerUIController : MonoBehaviour
 
         Inventory.SetActive(false);
 
-
-        #region LoadXML Data
-        var test = Utils.CamelCaseToLowerString("Items_DataManager");
-        //var test = Resources.FindObjectsOfTypeAll<ItemsDataBase>();
-        //ItemsList = ItemsBase.listItem;
-
-
-        Debug.Log(test);
-        Debug.Log(ItemsList);
-
-        #endregion
     }
 
     void Update()
@@ -40,9 +29,7 @@ public class ManagerUIController : MonoBehaviour
 
     public void Test()
     {
-        var Manager = new XMLManager();
-
-        Manager.SetProperty("level", "test");
+        
     }
 
     public void VisibleUI(string Name)

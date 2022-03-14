@@ -532,6 +532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetInventory: {fileID: 122488186}
   ItemsPanel: {fileID: 0}
+  Head: {fileID: 803733360}
+  Body: {fileID: 1240139327}
 --- !u!224 &556619340
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,3 +1,6 @@
+using DataBase.XML;
+using Models;
+using Models.Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,47 +11,28 @@ public class InventoryView : MonoBehaviour
     [SerializeField] Inventory TargetInventory;
     [SerializeField] RectTransform ItemsPanel;
 
-    // named object items in inventory equals name TargetInventory slots
-    // private string[] NamesFixedSlotsInventory = { "Helmet", "RightHand" , "LeftHand" };
+    public GameObject Head;
+    public GameObject Body;
 
+    public ItemsDataBase ItemsDataBase;
 
     void Start()
     {
-        // test
+        XMLManager XMLUser = new XMLManager("user");
 
-        if (TargetInventory.Helmet != null)
-		{
-            var helmet = transform.Find("Helmet");
-            helmet.GetComponent<SpriteRenderer>().sprite = TargetInventory.Helmet.Icon;
-        }
+        Slot slotHead = Head.GetComponent<Slot>();
+        string slotHeadName = Utils.CamelCaseToLowerString(slotHead.name);
 
-        if (TargetInventory.RightHand != null)
-        {
-            var righthand = transform.Find("RightHand");
-            righthand.GetComponent<SpriteRenderer>().sprite = TargetInventory.RightHand.Icon;
-        }
+        string idHeadXML = XMLUser.GetProperty(slotHeadName);
 
-        if (TargetInventory.LeftHand != null)
-        {
-            var lefthand = transform.Find("LeftHand");
-            lefthand.GetComponent<SpriteRenderer>().sprite = TargetInventory.LeftHand.Icon;
-        }
+        var test = ItemsDataBase.listItem;
+        var test2 = test.Find(b => b.Id == idHeadXML);
 
-        Redraw();
+        slotHead.Item = test2;
+
+        //slotHead.Item = idHeadXML;
+
+
     }
 
-    void Redraw()
-    {
-        for(int i = 0; i < TargetInventory.InventoryItems.Count; i++)
-		{
-            var Item = TargetInventory.InventoryItems[i];
-            var IconObject = new GameObject("Icon");
-
-            IconObject.AddComponent<Image>().sprite = Item.Icon;
-
-            Debug.Log(IconObject);
-
-            IconObject.transform.SetParent(ItemsPanel);
-        }
-    }
 }
