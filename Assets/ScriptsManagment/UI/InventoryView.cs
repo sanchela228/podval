@@ -19,9 +19,7 @@ public class InventoryView : MonoBehaviour
 
     void Start()
     {
-        List<Item> _AllItemList = ItemsDataBase.listItem; // Поправить обработку на класс Base
-        AllItemsList = _AllItemList;
-
+        AllItemsList = ItemsDataBase.listItem;
 
         LoadTargetItems();
     }
@@ -37,7 +35,7 @@ public class InventoryView : MonoBehaviour
             string idCurrentSlotXML = XMLUser.GetProperty(Utils.CamelCaseToLowerString(currentSlot.name));
             Item saveItem = AllItemsList.Find(b => b.Id == idCurrentSlotXML);
 
-            currentSlot.Item = saveItem;
+            if(saveItem != null) currentSlot.Item = saveItem;
         }
     }
 }

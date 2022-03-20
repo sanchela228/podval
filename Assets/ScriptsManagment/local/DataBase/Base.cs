@@ -1,14 +1,20 @@
 using Models;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 
 namespace DataBase
 {
-    public class Base
+    public class Base : MonoBehaviour
     {
-       // здесь нужно будет настроить работу с объектами хранения и их получения
+        public ItemsDataBase ItemsDataBase;
+
+        public List<Item> GetListItem()
+        {
+            return ItemsDataBase.listItem;
+        }
     }
 }
 

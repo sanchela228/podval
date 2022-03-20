@@ -25,13 +25,12 @@ namespace DataBase.XML
             _nameXmlSelected = Name;
 
             _xmlDocument = new XmlDocument();
-            _xmlDocument.Load(Application.dataPath + "/XMLData/"+ _nameXmlSelected + ".xml");
+            _xmlDocument.Load(Directory.GetCurrentDirectory() + "/Assets/XMLData/" + _nameXmlSelected + ".xml");
 
             XMLNode = _xmlDocument.SelectSingleNode("/" + Name);
-
         }
 
-        public void SetProperty(string property, string value = null)
+        public void SetProperty(string property, string value = null)   
         {
             var XMLproperty = XMLNode.SelectSingleNode(property);
             if (value != null) XMLproperty.InnerXml = value;
@@ -48,10 +47,8 @@ namespace DataBase.XML
 
         protected void Save()
         {
-            _xmlDocument.Save(Application.dataPath + "/XMLData/" + _nameXmlSelected + ".xml");
+            _xmlDocument.Save(Directory.GetCurrentDirectory() + "/Assets/XMLData/" + _nameXmlSelected + ".xml");
         }
     }
-
-
 }
 
