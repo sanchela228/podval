@@ -10,34 +10,6 @@ namespace Models
         private List<Item> _listItem;
 
         public List<Item> listItem => this._listItem;
-
-
-
-        //private static ItemsDataBase _instance;
-        //public static ItemsDataBase Instance
-        //{
-        //    get
-        //    {
-        //        if (!_instance)
-        //        {
-        //            _instance = Resources.<ItemsDataBase>();
-        //        }
-
-
-        //        return _instance;
-        //    }
-        //}
-
-
-        //private static ItemsDataBase instance;
-        //private ItemsDataBase() { }
-
-        //public static ItemsDataBase getInstance()
-        //{
-        //    if (instance == null)
-        //        instance = new ItemsDataBase();
-        //    return instance;
-        //}
     }
 }
 

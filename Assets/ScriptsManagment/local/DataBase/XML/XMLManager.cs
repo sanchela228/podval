@@ -15,22 +15,24 @@ namespace DataBase.XML
         // для удобного контроля и чтобы не ебаться с именами.
 
         //public XMLUser _userData;
+        public XmlNode XMLNode;
 
         private XmlDocument _xmlDocument;
         private string _nameXmlSelected;
 
-        public XMLManager(string Name = "UserData")
+        public XMLManager(string Name)
         {
             _nameXmlSelected = Name;
 
             _xmlDocument = new XmlDocument();
-            _xmlDocument.Load(Application.dataPath + "/XMLData/"+ _nameXmlSelected + ".xml");
-           
+            _xmlDocument.Load(Directory.GetCurrentDirectory() + "/Assets/XMLData/" + _nameXmlSelected + ".xml");
+
+            XMLNode = _xmlDocument.SelectSingleNode("/" + Name);
         }
 
-        public void SetProperty(string property, string value = null)
+        public void SetProperty(string property, string value = null)   
         {
-            var XMLproperty = _xmlDocument.SelectSingleNode("/user/" + property);
+            var XMLproperty = XMLNode.SelectSingleNode(property);
             if (value != null) XMLproperty.InnerXml = value;
 
             Save();
@@ -38,17 +40,15 @@ namespace DataBase.XML
 
         public string GetProperty(string property)
         {
-            var XMLproperty = _xmlDocument.SelectSingleNode("/user/" + property);
+            var XMLproperty = XMLNode.SelectSingleNode(property);
 
             return XMLproperty.InnerXml;
         }
 
         protected void Save()
         {
-            _xmlDocument.Save(Application.dataPath + "/XMLData/" + _nameXmlSelected + ".xml");
+            _xmlDocument.Save(Directory.GetCurrentDirectory() + "/Assets/XMLData/" + _nameXmlSelected + ".xml");
         }
     }
-
-
 }
 
