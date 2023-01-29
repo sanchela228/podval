@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Models.Inventory
 {
@@ -12,23 +13,23 @@ namespace Models.Inventory
         public Item Item;
         public Sprite SpriteDefault;
 
-        protected SpriteRenderer spriteSlot;
+        protected Image image;
      
 
         private void Start()
         {
-            spriteSlot = GetComponent<SpriteRenderer>();
+            image = GetComponent<Image>();
         }
 
         void OnGUI()
         {
             if (Item != null && Item.Icon != SpriteDefault)
             {
-                if (Item.Icon != null) spriteSlot.sprite = Item.Icon;
+                if (Item.Icon != null) image.sprite = Item.Icon;
             }
             else
             {
-                spriteSlot.sprite = SpriteDefault;
+                image.sprite = SpriteDefault;
             }
 
             
