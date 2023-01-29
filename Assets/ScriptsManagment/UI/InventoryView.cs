@@ -21,7 +21,7 @@ public class InventoryView : MonoBehaviour
     {
         AllItemsList = ItemsDataBase.listItem;
 
-        LoadTargetItems();
+        //LoadTargetItems();
     }
 
     private void LoadTargetItems()
