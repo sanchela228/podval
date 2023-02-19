@@ -1,38 +1,43 @@
+using Models;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Models.Inventory
 {
     public class Slot : MonoBehaviour
     {
-        public bool ActiveSlot;
-
+        public bool ActiveItem;
         public TypesItem Type;
-        public Item Item;
-        public Sprite SpriteDefault;
 
-        protected Image image;
-     
+        private Color DefaultColor;
+        private bool isHighlighted;
 
-        private void Start()
+        RaycastHit2D rayHit;
+
+
+        public bool IsActive()
         {
-            image = GetComponent<Image>();
+            return ActiveItem;
         }
 
-        void OnGUI()
+        void Start()
         {
-            if (Item != null && Item.Icon != SpriteDefault)
-            {
-                if (Item.Icon != null) image.sprite = Item.Icon;
-            }
-            else
-            {
-                image.sprite = SpriteDefault;
-            }
+            DefaultColor = transform.GetComponent<UnityEngine.UI.Image>().color;
+        }
 
-            
+        void Update()
+        {
+            rayHit = Physics2D.Raycast(transform.position, Vector2.one);
+
+            if (rayHit.collider.CompareTag("Item"))
+            {
+                this.isHighlighted = true;
+            }
+            else this.isHighlighted = false;
+
+            if (this.isHighlighted) transform.GetComponent<UnityEngine.UI.Image>().color = Color.red;
+            else transform.GetComponent<UnityEngine.UI.Image>().color = DefaultColor;
         }
     }
 }

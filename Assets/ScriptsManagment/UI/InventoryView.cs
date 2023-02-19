@@ -5,6 +5,7 @@ using Models.Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryView : MonoBehaviour
@@ -30,7 +31,7 @@ public class InventoryView : MonoBehaviour
 
         foreach (GameObject target in targetGameObjects)
         {
-            Slot currentSlot = target.GetComponent<Slot>();
+            ItemObject currentSlot = target.GetComponent<ItemObject>();
 
             string idCurrentSlotXML = XMLUser.GetProperty(Utils.CamelCaseToLowerString(currentSlot.name));
             Item saveItem = AllItemsList.Find(b => b.Id == idCurrentSlotXML);
