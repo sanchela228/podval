@@ -85,8 +85,6 @@ namespace Models.Inventory
             }
 
             _transform.localPosition = pos;
-
-            //transform.position = _diference;
         }
     }
 }
