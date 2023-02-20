@@ -7,16 +7,18 @@ using UnityEngine;
 
 public class ManagerUIController : MonoBehaviour
 {
-    public ItemsDataBase ItemsList;
-
     private List<GameObject> ListUI = new List<GameObject>();
 
     void Start()
     {
-        var Inventory = GameObject.Find("InventoryUI");
+        var Inventory = GameObject.Find("InventoryUI"); 
+        var InterectiveUI = GameObject.Find("InterectiveUI");
+
         ListUI.Add(Inventory);
+        ListUI.Add(InterectiveUI);
 
         Inventory.SetActive(false);
+        //InterectiveUI.SetActive(false);
 
     }
 

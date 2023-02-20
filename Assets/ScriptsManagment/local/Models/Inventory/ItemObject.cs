@@ -49,7 +49,7 @@ namespace Models.Inventory
         private void Update()
         {
             _diference = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            _diference.z = -1;
+            _diference.z = -2;
 
             rayHit = Physics2D.Raycast(_diference, Vector2.zero);
         }
@@ -63,11 +63,16 @@ namespace Models.Inventory
         public void OnDrag(PointerEventData eventData)
         {
             _transform.position = _diference;
+
+            if (rayHit.transform != null)
+            {
+                Debug.Log(rayHit.collider.name);
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            Vector3 pos = new Vector3() { x = 0, z = -1, y = 0 };
+            Vector3 pos = new Vector3() { x = 0, z = -2, y = 0 };
 
             if (rayHit.transform != null && rayHit.collider.CompareTag("SlotForItem"))
             {
