@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UserController : MonoBehaviour
 {
-    public double moveSpeed = 2;
+    public double moveSpeed;
     public Rigidbody2D rbUser;
 
     Vector2 movment;
@@ -28,6 +28,7 @@ public class UserController : MonoBehaviour
 
         if (direction == 0 || direction == 2 || direction == -2) speed = moveSpeed / 1.2;
 
-        rbUser.MovePosition(rbUser.position + (movment * (float) speed * Time.fixedDeltaTime));
+        rbUser.MovePosition(rbUser.position + (movment * (float)speed * Time.fixedDeltaTime));
+        
     }
 }
