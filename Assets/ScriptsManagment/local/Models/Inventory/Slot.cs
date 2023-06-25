@@ -39,6 +39,12 @@ namespace Models.Inventory
             if (this.isHighlighted) transform.GetComponent<UnityEngine.UI.Image>().color = Color.red;
             else transform.GetComponent<UnityEngine.UI.Image>().color = DefaultColor;
         }
+
+
+        public bool IsEmpty()
+        {
+            return transform.childCount == 0;
+        }
     }
 }
 

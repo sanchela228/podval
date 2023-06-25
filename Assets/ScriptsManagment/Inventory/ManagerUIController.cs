@@ -14,31 +14,16 @@ public class ManagerUIController : MonoBehaviour
         var Inventory = GameObject.Find("InventoryUI"); 
         var InterectiveUI = GameObject.Find("InterectiveUI");
 
-        ListUI.Add(Inventory);
-        ListUI.Add(InterectiveUI);
-
-        Inventory.SetActive(false);
-        //InterectiveUI.SetActive(false);
-
+        Controllers.InterfaceController.LoadUIItem(Inventory);
+        Controllers.InterfaceController.LoadUIItem(InterectiveUI);
     }
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.I)) VisibleUI("InventoryUI");
-
-        if (Input.GetKeyUp(KeyCode.L)) Test();
-    }
-
-    public void Test()
-    {
-        
-    }
-
-    public void VisibleUI(string Name)
-    {
-        var UI = ListUI.Find(b => b.name == Name);
-
-        if (UI.activeSelf) UI.SetActive(false);
-        else UI.SetActive(true);
+        if (Input.GetKeyUp(KeyCode.I))
+        {
+            GameObject inv =  Controllers.InterfaceController.ListUI.Find(b => b.name == "InventoryUI");
+            Controllers.InterfaceController.ToggleUIActive(inv);
+        }
     }
 }
