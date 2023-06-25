@@ -78,11 +78,27 @@ namespace Models.Inventory
             {
                 Slot rayHitSlot = rayHit.transform.GetComponent<Slot>();
 
-                if (rayHitSlot.IsActive() && rayHitSlot.Type == Item.Type)
+                if (rayHitSlot.IsEmpty())
                 {
-                    _transform.SetParent(rayHit.transform);
+                    if (rayHitSlot.IsActive())
+                    {
+                        if (ActiveItem)
+                        {
+                            if (rayHitSlot.Type == Item.Type) _transform.SetParent(rayHit.transform);
+                            else _transform.SetParent(defaultParent);
+                        }
+                        else _transform.SetParent(defaultParent);
+
+                    }
+                    else
+                    {
+                        if (rayHitSlot.Type == Item.Type)
+                        {
+                            _transform.SetParent(rayHit.transform);
+                        }
+                        else _transform.SetParent(defaultParent);
+                    }
                 }
-                else _transform.SetParent(defaultParent);
             }
             else
             {
@@ -91,6 +107,7 @@ namespace Models.Inventory
 
             _transform.localPosition = pos;
         }
+
     }
 }
 

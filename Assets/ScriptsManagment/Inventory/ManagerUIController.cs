@@ -18,7 +18,7 @@ public class ManagerUIController : MonoBehaviour
         ListUI.Add(InterectiveUI);
 
         Inventory.SetActive(false);
-        //InterectiveUI.SetActive(false);
+        InterectiveUI.SetActive(false);
 
     }
 
