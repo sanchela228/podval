@@ -11,6 +11,8 @@ public class Inventory : MonoBehaviour
 	public Item LeftHand;
 	public Item RightHand;
 
+	// test update github
+
 
 	void Awake()
 	{
