@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f421b195a693c964c9050070e20744a6, type: 3}
+  m_Script: {fileID: 11500000, guid: ef0aabd8165fbed4eb8f3fd9c3de93a0, type: 3}
   m_Name: ItemData
   m_EditorClassIdentifier: 
-  Id: 7d38ddb5-7ecb-4df6-aa96-4e51adf701b4
+  Id: 5592d329-c4b9-4a95-9f27-0c82cd51f672
   Name: 
-  Icon: {fileID: 0}
-  _isUserProperty: 0
-  Type: {fileID: 11400000, guid: 588c8cad640966a47b963e2afb52caa1, type: 2}
-  Description: 
-  Health: 0
-  Armor: 0
+  ElementUI: {fileID: 0}

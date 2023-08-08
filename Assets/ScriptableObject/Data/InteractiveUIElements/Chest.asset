@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f421b195a693c964c9050070e20744a6, type: 3}
-  m_Name: gfddf
+  m_Script: {fileID: 11500000, guid: ef0aabd8165fbed4eb8f3fd9c3de93a0, type: 3}
+  m_Name: Chest
   m_EditorClassIdentifier: 
-  Id: 9a812613-ffff-4fca-88aa-15c7d54daacb
-  Name: 
-  Icon: {fileID: 0}
-  _isUserProperty: 0
-  Type: {fileID: 0}
-  Description: 
-  Health: 0
-  Armor: 0
+  Id: fa72c05f-cca2-4104-8f52-00c42e0b4718
+  Name: Chest
+  ElementUI: {fileID: 0}

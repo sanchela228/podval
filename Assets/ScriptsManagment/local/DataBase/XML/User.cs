@@ -12,7 +12,7 @@ namespace DataBase.XML
     {
         public int Level { get; set; }
         public string Name { get; set; }
-        public string RightHeand { get; set; }
+        public string RightHand { get; set; }
         public string Head { get; set; }
         public string Body { get; set; }
 

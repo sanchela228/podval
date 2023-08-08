@@ -1,54 +1,42 @@
+using DataBase;
+using DataBase.XML;
+using Models;
+using Models.Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryView : MonoBehaviour
 {
-    [SerializeField] Inventory TargetInventory;
-    [SerializeField] RectTransform ItemsPanel;
+    public GameObject Head;
+    public GameObject Body;
 
-    // named object items in inventory equals name TargetInventory slots
-    // private string[] NamesFixedSlotsInventory = { "Helmet", "RightHand" , "LeftHand" };
+    public ItemsDataBase ItemsDataBase;
 
+    private XMLManager XMLUser = new XMLManager("user");
+    private List<Item> AllItemsList;
 
     void Start()
     {
-        // test
+        AllItemsList = ItemsDataBase.listItem;
 
-        if (TargetInventory.Helmet != null)
-		{
-            var helmet = transform.Find("Helmet");
-            helmet.GetComponent<SpriteRenderer>().sprite = TargetInventory.Helmet.Icon;
-        }
-
-        if (TargetInventory.RightHand != null)
-        {
-            var righthand = transform.Find("RightHand");
-            righthand.GetComponent<SpriteRenderer>().sprite = TargetInventory.RightHand.Icon;
-        }
-
-        if (TargetInventory.LeftHand != null)
-        {
-            var lefthand = transform.Find("LeftHand");
-            lefthand.GetComponent<SpriteRenderer>().sprite = TargetInventory.LeftHand.Icon;
-        }
-
-        Redraw();
+        //LoadTargetItems();
     }
 
-    void Redraw()
+    private void LoadTargetItems()
     {
-        for(int i = 0; i < TargetInventory.InventoryItems.Count; i++)
-		{
-            var Item = TargetInventory.InventoryItems[i];
-            var IconObject = new GameObject("Icon");
+        List<GameObject> targetGameObjects = new List<GameObject>() { Head, Body };
 
-            IconObject.AddComponent<Image>().sprite = Item.Icon;
+        foreach (GameObject target in targetGameObjects)
+        {
+            ItemObject currentSlot = target.GetComponent<ItemObject>();
 
-            Debug.Log(IconObject);
+            string idCurrentSlotXML = XMLUser.GetProperty(Utils.CamelCaseToLowerString(currentSlot.name));
+            Item saveItem = AllItemsList.Find(b => b.Id == idCurrentSlotXML);
 
-            IconObject.transform.SetParent(ItemsPanel);
+            if(saveItem != null) currentSlot.Item = saveItem;
         }
     }
 }
