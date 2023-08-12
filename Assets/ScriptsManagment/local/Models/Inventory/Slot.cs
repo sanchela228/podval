@@ -28,7 +28,10 @@ namespace Models.Inventory
 
         void Update()
         {
-            rayHit = Physics2D.Raycast(transform.position, Vector2.one);
+
+            // this code create background color if slot have item
+
+            /* rayHit = Physics2D.Raycast(transform.position, Vector2.one);
 
             if (rayHit.collider.CompareTag("Item"))
             {
@@ -37,7 +40,7 @@ namespace Models.Inventory
             else this.isHighlighted = false;
 
             if (this.isHighlighted) transform.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-            else transform.GetComponent<UnityEngine.UI.Image>().color = DefaultColor;
+            else transform.GetComponent<UnityEngine.UI.Image>().color = DefaultColor;*/
         }
 
 

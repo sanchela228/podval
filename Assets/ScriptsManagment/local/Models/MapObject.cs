@@ -12,10 +12,12 @@ namespace Models
 
         private void OnBecameVisible()
         {
-            Sprite EnvIcon = Environment.Icon;
             var spriteComponent = this.GetComponent<SpriteRenderer>();
 
-            spriteComponent.sprite = EnvIcon;
+            if (spriteComponent.sprite == null && Environment.Icon != null)
+            {
+                spriteComponent.sprite = Environment.Icon;
+            }
         }
 
         private void OnMouseDown()
