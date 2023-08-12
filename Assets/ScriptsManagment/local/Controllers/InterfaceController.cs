@@ -5,13 +5,14 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Models;
+using Models.Inventory;
 
 namespace Controllers
 {
     public class InterfaceController
     {
         public static List<GameObject> ListUI = new List<GameObject>();
-        public GameObject potchPrf;
 
         InterfaceController()
         {
@@ -30,25 +31,48 @@ namespace Controllers
             else UI.SetActive(true);
         }
 
-        public static void ToggleInteractiveUI(GameObject interactiveInterface)
+        public static GameObject ToggleInteractiveUI(GameObject interactiveInterface)
         {
+            GameObject prefab = null;
+
             GameObject interfaceMain = ListUI.Find(b => b.name == "InterectiveUI");
             ToggleUIActive(interfaceMain);
 
-            if (interfaceMain.active)
+            if (interfaceMain.activeSelf)
             {
-                GameObject prefab = UnityEngine.Object.Instantiate<GameObject>(
-                    interactiveInterface, 
-                    new Vector3(0, 0, 0), 
+                prefab = UnityEngine.Object.Instantiate<GameObject>(
+                    interactiveInterface,
+                    new Vector3(0, 0, 0),
                     Quaternion.identity
                 );
 
                 prefab.transform.SetParent(interfaceMain.transform, false);
             }
-            else UnityEngine.Object.Destroy( interfaceMain.transform.GetChild(0).gameObject );
+            else UnityEngine.Object.Destroy(interfaceMain.transform.GetChild(0).gameObject);
+            
+            return prefab;
+        }
+
+        public static void PutItemsInInterface(GameObject Interface, List<Models.Item> Items)
+        {
+            var ResourcesItem = Resources.Load<GameObject>("Prefabs/Item");    
+
+            for (int i = 0; i < Interface.transform.childCount;  i++)
+            {
+                var interfaceGameObject = Interface.transform.GetChild(i).gameObject;
+
+                GameObject prefab = UnityEngine.Object.Instantiate<GameObject>(
+                    ResourcesItem,
+                    new Vector3(0, 0, -2),
+                    Quaternion.identity
+                );
+
+                if (Items[i]) prefab.GetComponent<ItemObject>().Item = Items[i];
+
+                prefab.transform.SetParent(interfaceGameObject.transform, false);
+            }
+
         }
 
     }
 }
-
-

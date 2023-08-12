@@ -9,7 +9,7 @@ namespace Models
     public class MapObject : MonoBehaviour
     {
         public Environment Environment;
-
+        
         private void OnBecameVisible()
         {
             var spriteComponent = this.GetComponent<SpriteRenderer>();
@@ -22,7 +22,7 @@ namespace Models
 
         private void OnMouseDown()
         {
-            Environment.Click();
+            Environment.Click(this);
         }
 
         public void InstantiateElement()

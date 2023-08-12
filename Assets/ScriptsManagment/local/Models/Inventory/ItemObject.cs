@@ -18,7 +18,6 @@ namespace Models.Inventory
 
         RaycastHit2D rayHit;
 
-        public bool ActiveItem;
         public Item Item;
 
         protected UnityEngine.UI.Image image;
@@ -81,7 +80,7 @@ namespace Models.Inventory
                 {
                     if (rayHitSlot.IsActive())
                     {
-                        if (ActiveItem)
+                        if (Item._isUserProperty)
                         {
                             if (rayHitSlot.Type == Item.Type) _transform.SetParent(rayHit.transform);
                             else _transform.SetParent(defaultParent);

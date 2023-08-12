@@ -15,6 +15,6 @@ namespace Models
         [TextArea]
         public string Description;
 
-        public abstract void Click();
+        public abstract void Click( MapObject _mapObject);
     }
 }

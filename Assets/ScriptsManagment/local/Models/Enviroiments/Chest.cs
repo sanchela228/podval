@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +9,15 @@ namespace Models.Environments
     {
         public GameObject Interface;
 
-        public override void Click()
+        public List<Models.Item> Items;
+
+        public override void Click(MapObject _mapObject)
         {
-            /* open interface */
-            Controllers.InterfaceController.ToggleInteractiveUI(Interface);
+            var _interface = Controllers.InterfaceController.ToggleInteractiveUI(Interface);
+            _interface.GetComponent<Controllers.SyncInterfaceWithMapObject>().mapObject = _mapObject;
+
+            if (Items.Count > 0 && _interface != null) 
+                Controllers.InterfaceController.PutItemsInInterface(_interface, Items);
         }
     }
 }
