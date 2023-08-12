@@ -19,7 +19,6 @@ namespace Models.Inventory
         RaycastHit2D rayHit;
 
         public bool ActiveItem;
-        public TypesItem Type;
         public Item Item;
 
         protected UnityEngine.UI.Image image;
@@ -92,11 +91,7 @@ namespace Models.Inventory
                     }
                     else
                     {
-                        if (rayHitSlot.Type == Item.Type)
-                        {
-                            _transform.SetParent(rayHit.transform);
-                        }
-                        else _transform.SetParent(defaultParent);
+                         _transform.SetParent(rayHit.transform);
                     }
                 }
             }
