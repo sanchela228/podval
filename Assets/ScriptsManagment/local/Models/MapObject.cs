@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace Models
 {
-    
     public class MapObject : MonoBehaviour
     {
         public Environment Environment;
@@ -16,7 +15,7 @@ namespace Models
         {
             var spriteComponent = this.GetComponent<SpriteRenderer>();
 
-            if (spriteComponent.sprite == null && Environment.Icon != null)
+            if (spriteComponent != null && spriteComponent.sprite == null && Environment.Icon != null)
             {
                 spriteComponent.sprite = Environment.Icon;
             }

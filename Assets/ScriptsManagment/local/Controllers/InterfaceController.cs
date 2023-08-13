@@ -63,21 +63,24 @@ namespace Controllers
                
                 if (interfaceGameObject.CompareTag("SlotForItem"))
                 {
-                    GameObject prefab = UnityEngine.Object.Instantiate<GameObject>(
-                        ResourcesItem,
-                        new Vector3(0, 0, -2),
-                        Quaternion.identity
-                    );
-
-                    if (Items[i])
+                    if (Items.Count >= (i + 1) && Items[i])
                     {
+                        GameObject prefab = UnityEngine.Object.Instantiate<GameObject>(
+                            ResourcesItem,
+                            new Vector3(0, 0, -2),
+                            Quaternion.identity
+                        );
+
                         interfaceGameObject.transform.GetComponent<Slot>().ItemObject = prefab;
                         prefab.GetComponent<ItemObject>().Item = Items[i];
+
+                        prefab.transform.SetParent(interfaceGameObject.transform, false);
                     }
-                    
-                    prefab.transform.SetParent(interfaceGameObject.transform, false);
                 }
             }
+
+
+
         }
     }
 }
