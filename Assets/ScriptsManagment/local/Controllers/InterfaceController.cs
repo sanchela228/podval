@@ -60,19 +60,24 @@ namespace Controllers
             for (int i = 0; i < Interface.transform.childCount;  i++)
             {
                 var interfaceGameObject = Interface.transform.GetChild(i).gameObject;
+               
+                if (interfaceGameObject.CompareTag("SlotForItem"))
+                {
+                    GameObject prefab = UnityEngine.Object.Instantiate<GameObject>(
+                        ResourcesItem,
+                        new Vector3(0, 0, -2),
+                        Quaternion.identity
+                    );
 
-                GameObject prefab = UnityEngine.Object.Instantiate<GameObject>(
-                    ResourcesItem,
-                    new Vector3(0, 0, -2),
-                    Quaternion.identity
-                );
-
-                if (Items[i]) prefab.GetComponent<ItemObject>().Item = Items[i];
-
-                prefab.transform.SetParent(interfaceGameObject.transform, false);
+                    if (Items[i])
+                    {
+                        interfaceGameObject.transform.GetComponent<Slot>().ItemObject = prefab;
+                        prefab.GetComponent<ItemObject>().Item = Items[i];
+                    }
+                    
+                    prefab.transform.SetParent(interfaceGameObject.transform, false);
+                }
             }
-
         }
-
     }
 }

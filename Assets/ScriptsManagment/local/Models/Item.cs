@@ -7,7 +7,7 @@ namespace Models
 {
 	[Serializable]
 	public class Item : BaseScriptableObject
-	{
+    {
 		public string Name;
 		public Sprite Icon;
 		public bool _isUserProperty = false;
