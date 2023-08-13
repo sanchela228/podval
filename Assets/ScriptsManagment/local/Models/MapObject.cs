@@ -1,3 +1,5 @@
+using Models.Environments;
+using Models.Inventory;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,16 +7,15 @@ using UnityEngine;
 
 namespace Models
 {
-    
     public class MapObject : MonoBehaviour
     {
         public Environment Environment;
-
+        
         private void OnBecameVisible()
         {
             var spriteComponent = this.GetComponent<SpriteRenderer>();
 
-            if (spriteComponent.sprite == null && Environment.Icon != null)
+            if (spriteComponent != null && spriteComponent.sprite == null && Environment.Icon != null)
             {
                 spriteComponent.sprite = Environment.Icon;
             }
@@ -22,7 +23,7 @@ namespace Models
 
         private void OnMouseDown()
         {
-            Environment.Click();
+            Environment.Click(this);
         }
 
         public void InstantiateElement()

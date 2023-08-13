@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: 64d2feee-a529-4b13-ac53-e10adbb50c28
   Name: Heavy armor
   Icon: {fileID: 21300000, guid: 5cdd29dd683b0514387916ecfd35f956, type: 3}
-  _isUserProperty: 0
+  _isUserProperty: 1
   Type: {fileID: 11400000, guid: f4c24f70f762b0f4196e78ac7bfd7ab7, type: 2}
   Description: body armor
   Health: 15

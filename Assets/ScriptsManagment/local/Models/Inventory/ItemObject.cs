@@ -18,7 +18,6 @@ namespace Models.Inventory
 
         RaycastHit2D rayHit;
 
-        public bool ActiveItem;
         public Item Item;
 
         protected UnityEngine.UI.Image image;
@@ -62,11 +61,6 @@ namespace Models.Inventory
         public void OnDrag(PointerEventData eventData)
         {
             _transform.position = _diference;
-
-            if (rayHit.transform != null)
-            {
-                Debug.Log(rayHit.collider.name);
-            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -81,9 +75,9 @@ namespace Models.Inventory
                 {
                     if (rayHitSlot.IsActive())
                     {
-                        if (ActiveItem)
+                        if (Item._isUserProperty)
                         {
-                            if (rayHitSlot.Type == Item.Type) _transform.SetParent(rayHit.transform);
+                            if (rayHitSlot.Type == Item.Type) this.swapParentSlotOnEndDrag(rayHitSlot, defaultParent.GetComponent<Slot>());
                             else _transform.SetParent(defaultParent);
                         }
                         else _transform.SetParent(defaultParent);
@@ -91,7 +85,7 @@ namespace Models.Inventory
                     }
                     else
                     {
-                         _transform.SetParent(rayHit.transform);
+                        this.swapParentSlotOnEndDrag(rayHitSlot, defaultParent.GetComponent<Slot>());
                     }
                 }
             }
@@ -101,6 +95,18 @@ namespace Models.Inventory
             }
 
             _transform.localPosition = pos;
+        }
+
+        protected void swapParentSlotOnEndDrag(Slot newSlot, Slot oldSlot)
+        {
+            _transform.SetParent(rayHit.transform);
+
+            if (newSlot.GetSyncInterface() != oldSlot.GetSyncInterface())
+            {
+                newSlot.addItemFromSlot(Item);
+                oldSlot.removeItemFromSlot(Item);
+            }
+            
         }
 
     }
