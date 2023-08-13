@@ -1,6 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Models;
+using Models.Inventory;
 
 namespace Controllers
 {
@@ -25,7 +31,56 @@ namespace Controllers
             else UI.SetActive(true);
         }
 
+        public static GameObject ToggleInteractiveUI(GameObject interactiveInterface)
+        {
+            GameObject prefab = null;
+
+            GameObject interfaceMain = ListUI.Find(b => b.name == "InterectiveUI");
+            ToggleUIActive(interfaceMain);
+
+            if (interfaceMain.activeSelf)
+            {
+                prefab = UnityEngine.Object.Instantiate<GameObject>(
+                    interactiveInterface,
+                    new Vector3(0, 0, 0),
+                    Quaternion.identity
+                );
+
+                prefab.transform.SetParent(interfaceMain.transform, false);
+            }
+            else UnityEngine.Object.Destroy(interfaceMain.transform.GetChild(0).gameObject);
+            
+            return prefab;
+        }
+
+        public static void PutItemsInInterface(GameObject Interface, List<Models.Item> Items)
+        {
+            var ResourcesItem = Resources.Load<GameObject>("Prefabs/Item");    
+
+            for (int i = 0; i < Interface.transform.childCount;  i++)
+            {
+                var interfaceGameObject = Interface.transform.GetChild(i).gameObject;
+               
+                if (interfaceGameObject.CompareTag("SlotForItem"))
+                {
+                    if (Items.Count >= (i + 1) && Items[i])
+                    {
+                        GameObject prefab = UnityEngine.Object.Instantiate<GameObject>(
+                            ResourcesItem,
+                            new Vector3(0, 0, -2),
+                            Quaternion.identity
+                        );
+
+                        interfaceGameObject.transform.GetComponent<Slot>().ItemObject = prefab;
+                        prefab.GetComponent<ItemObject>().Item = Items[i];
+
+                        prefab.transform.SetParent(interfaceGameObject.transform, false);
+                    }
+                }
+            }
+
+
+
+        }
     }
 }
-
-

@@ -1,4 +1,6 @@
+using Controllers;
 using Models;
+using Models.Environments;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +14,9 @@ namespace Models.Inventory
 
         private Color DefaultColor;
         private bool isHighlighted;
-
         RaycastHit2D rayHit;
+
+        public GameObject ItemObject;
 
 
         public bool IsActive()
@@ -24,11 +27,15 @@ namespace Models.Inventory
         void Start()
         {
             DefaultColor = transform.GetComponent<UnityEngine.UI.Image>().color;
+
         }
 
         void Update()
         {
-            rayHit = Physics2D.Raycast(transform.position, Vector2.one);
+
+            // this code create background color if slot have item
+
+            /* rayHit = Physics2D.Raycast(transform.position, Vector2.one);
 
             if (rayHit.collider.CompareTag("Item"))
             {
@@ -37,9 +44,29 @@ namespace Models.Inventory
             else this.isHighlighted = false;
 
             if (this.isHighlighted) transform.GetComponent<UnityEngine.UI.Image>().color = Color.red;
-            else transform.GetComponent<UnityEngine.UI.Image>().color = DefaultColor;
+            else transform.GetComponent<UnityEngine.UI.Image>().color = DefaultColor;*/
         }
 
+        public void removeItemFromSlot(Item Item)
+        {
+            if (this.GetSyncInterface())
+            {
+                this.GetSyncInterface().mapObject.Environment.Change<Item>( Item, "remove");
+            }
+        }
+
+        public void addItemFromSlot(Item Item)
+        {
+            if (this.GetSyncInterface())
+            {
+                this.GetSyncInterface().mapObject.Environment.Change<Item>( Item, "add");
+            }
+        }
+
+        public SyncInterfaceWithMapObject GetSyncInterface()
+        {
+            return this.transform.GetComponentInParent<Controllers.SyncInterfaceWithMapObject>();
+        }
 
         public bool IsEmpty()
         {
