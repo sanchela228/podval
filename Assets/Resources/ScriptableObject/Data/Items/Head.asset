@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f421b195a693c964c9050070e20744a6, type: 3}
-  m_Name: Dragon's head
+  m_Name: Head
   m_EditorClassIdentifier: 
   Id: 7d38ddb5-7ecb-4df6-aa96-4e51adf701b4
   Name: Dragon's head

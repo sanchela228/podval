@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c19f75a273bbb7b4cacd8881a8d189e4, type: 3}
-  m_Name: Heavy armor
+  m_Name: Armor
   m_EditorClassIdentifier: 
   Id: 64d2feee-a529-4b13-ac53-e10adbb50c28
   Name: Heavy armor
