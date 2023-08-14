@@ -44,9 +44,17 @@ public class UserController : MonoBehaviour
                 Resources.Load<Head>("ScriptableObject/Data/Items/Head")
             );
 
+            Body objectHBody = UnityEngine.Object.Instantiate<Body>(
+                Resources.Load<Body>("ScriptableObject/Data/Items/Armor")
+            );
+
+            objectHBody.Id = Guid.NewGuid().ToString();
+            objectHead.Id = Guid.NewGuid().ToString();
             objectscript.Items.Add(objectHead);
+            objectscript.Items.Add(objectHBody);
 
             prefab.GetComponent<MapObject>().Environment = objectscript;
+
 
             //Debug.Log(objectscript);
         }

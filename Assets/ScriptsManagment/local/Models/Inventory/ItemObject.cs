@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
 
 namespace Models.Inventory
 {
@@ -86,6 +81,24 @@ namespace Models.Inventory
                     else
                     {
                         this.swapParentSlotOnEndDrag(rayHitSlot, defaultParent.GetComponent<Slot>());
+                    }
+                }
+                else
+                {
+                    // swap
+
+                    if (!rayHitSlot.IsActive())
+                    {
+                        var test = rayHitSlot.GetComponentInChildren<ItemObject>().transform;
+                        test.SetParent(defaultParent);
+                        test.localPosition = pos;
+
+                        _transform.SetParent(rayHit.transform);
+                    }
+                    else
+                    {
+                        /// poka default potom swap if type ==
+                        _transform.SetParent(defaultParent);
                     }
                 }
             }

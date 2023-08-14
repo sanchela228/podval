@@ -1,11 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
-using Models;
 using Models.Inventory;
 
 namespace Controllers
@@ -71,7 +65,7 @@ namespace Controllers
                             Quaternion.identity
                         );
 
-                        interfaceGameObject.transform.GetComponent<Slot>().ItemObject = prefab;
+                        interfaceGameObject.transform.GetComponent<Slot>().ItemObject = Items[i];
                         prefab.GetComponent<ItemObject>().Item = Items[i];
 
                         prefab.transform.SetParent(interfaceGameObject.transform, false);
