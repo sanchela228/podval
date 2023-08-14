@@ -89,9 +89,13 @@ namespace Models.Inventory
 
                     if (!rayHitSlot.IsActive())
                     {
-                        var test = rayHitSlot.GetComponentInChildren<ItemObject>().transform;
-                        test.SetParent(defaultParent);
-                        test.localPosition = pos;
+                        var test = rayHitSlot.GetComponentInChildren<ItemObject>();
+                        test.transform.SetParent(defaultParent);
+                        test.transform.localPosition = pos;
+
+
+                        this.justSwapWithOutInterface(rayHitSlot, defaultParent.GetComponent<Slot>(), test);
+
 
                         _transform.SetParent(rayHit.transform);
                     }
@@ -108,6 +112,18 @@ namespace Models.Inventory
             }
 
             _transform.localPosition = pos;
+        }
+
+        protected void justSwapWithOutInterface(Slot newSlot, Slot oldSlot, ItemObject nonTargetItem)
+        {
+            var test = nonTargetItem.Item;
+
+            oldSlot.addItemFromSlot(test);
+            newSlot.removeItemFromSlot(test);
+
+            oldSlot.removeItemFromSlot(Item);
+            newSlot.addItemFromSlot(Item);
+
         }
 
         protected void swapParentSlotOnEndDrag(Slot newSlot, Slot oldSlot)
