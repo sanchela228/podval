@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using static UnityEditor.PlayerSettings;
 
 namespace Models.Inventory
 {
@@ -85,17 +86,16 @@ namespace Models.Inventory
                 }
                 else
                 {
-                    // swap
-
                     if (!rayHitSlot.IsActive())
                     {
-                        var test = rayHitSlot.GetComponentInChildren<ItemObject>();
-                        test.transform.SetParent(defaultParent);
-                        test.transform.localPosition = pos;
+                        var targetObject = rayHitSlot.GetComponentInChildren<ItemObject>();
+
+                        Debug.Log(targetObject);
+                        targetObject.transform.SetParent(defaultParent);
+                        targetObject.transform.localPosition = pos;
 
 
-                        this.justSwapWithOutInterface(rayHitSlot, defaultParent.GetComponent<Slot>(), test);
-
+                        this.justSwapWithOutInterface(rayHitSlot, defaultParent.GetComponent<Slot>(), targetObject);
 
                         _transform.SetParent(rayHit.transform);
                     }
@@ -116,14 +116,13 @@ namespace Models.Inventory
 
         protected void justSwapWithOutInterface(Slot newSlot, Slot oldSlot, ItemObject nonTargetItem)
         {
-            var test = nonTargetItem.Item;
+            var item = nonTargetItem.Item;
 
-            oldSlot.addItemFromSlot(test);
-            newSlot.removeItemFromSlot(test);
-
+            newSlot.removeItemFromSlot(item);
             oldSlot.removeItemFromSlot(Item);
-            newSlot.addItemFromSlot(Item);
 
+            oldSlot.addItemFromSlot(item);
+            newSlot.addItemFromSlot(Item);
         }
 
         protected void swapParentSlotOnEndDrag(Slot newSlot, Slot oldSlot)
