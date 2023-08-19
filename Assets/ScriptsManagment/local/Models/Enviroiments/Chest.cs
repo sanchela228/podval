@@ -1,10 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
-
-using UnityEngine.Assertions.Must;
-using System;
-using static UnityEditor.Progress;
 using System.Linq;
 
 namespace Models.Environments

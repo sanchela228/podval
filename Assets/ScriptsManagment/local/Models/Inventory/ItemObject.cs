@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 
@@ -61,6 +57,11 @@ namespace Models.Inventory
         public void OnDrag(PointerEventData eventData)
         {
             _transform.position = _diference;
+
+            if (rayHit.transform != null)
+            {
+                Debug.Log(rayHit.collider.name);
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -88,6 +89,25 @@ namespace Models.Inventory
                         this.swapParentSlotOnEndDrag(rayHitSlot, defaultParent.GetComponent<Slot>());
                     }
                 }
+                else
+                {
+                    if (!rayHitSlot.IsActive() && !defaultParent.GetComponent<Slot>().IsActive())
+                    {
+                        var targetObject = rayHitSlot.GetComponentInChildren<ItemObject>();
+
+                        targetObject.transform.SetParent(defaultParent);
+                        targetObject.transform.localPosition = pos;
+
+                        this.justSwapWithOutInterface(rayHitSlot, defaultParent.GetComponent<Slot>(), targetObject);
+
+                        _transform.SetParent(rayHit.transform);
+                    }
+                    else
+                    {
+                        /// poka default potom swap if type ==
+                        _transform.SetParent(defaultParent);
+                    }
+                }
             }
             else
             {
@@ -95,6 +115,17 @@ namespace Models.Inventory
             }
 
             _transform.localPosition = pos;
+        }
+
+        protected void justSwapWithOutInterface(Slot newSlot, Slot oldSlot, ItemObject nonTargetItem)
+        {
+            var item = nonTargetItem.Item;
+
+            newSlot.removeItemFromSlot(item);
+            oldSlot.removeItemFromSlot(Item);
+
+            oldSlot.addItemFromSlot(item);
+            newSlot.addItemFromSlot(Item);
         }
 
         protected void swapParentSlotOnEndDrag(Slot newSlot, Slot oldSlot)

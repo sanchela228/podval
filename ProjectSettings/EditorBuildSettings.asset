@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Resources/Scenes/hideout.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/hideout.unity
+    guid: 4068033a7aa68034288dcb51a6c4a6ce
   m_configObjects: {}

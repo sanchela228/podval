@@ -1,12 +1,9 @@
 using Controllers;
-using Models;
-using Models.Environments;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Models.Inventory
 {
+    [SerializeField]
     public class Slot : MonoBehaviour
     {
         public bool ActiveItem;
@@ -16,7 +13,7 @@ namespace Models.Inventory
         private bool isHighlighted;
         RaycastHit2D rayHit;
 
-        public GameObject ItemObject;
+        public Item ItemObject;
 
 
         public bool IsActive()
@@ -49,6 +46,8 @@ namespace Models.Inventory
 
         public void removeItemFromSlot(Item Item)
         {
+            ItemObject = null;
+
             if (this.GetSyncInterface())
             {
                 this.GetSyncInterface().mapObject.Environment.Change<Item>( Item, "remove");
@@ -57,6 +56,8 @@ namespace Models.Inventory
 
         public void addItemFromSlot(Item Item)
         {
+            ItemObject = Item;
+
             if (this.GetSyncInterface())
             {
                 this.GetSyncInterface().mapObject.Environment.Change<Item>( Item, "add");
