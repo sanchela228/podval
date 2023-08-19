@@ -31,10 +31,11 @@ public class UserInventory : MonoBehaviour
     {
         if ( HeadSlot.transform.childCount > 0 )
             Head = (Head) HeadSlot.GetComponentInChildren<ItemObject>().Item;
+        else Head = null;
 
         if (BodySlot.transform.childCount > 0)
             Body = (Body) BodySlot.GetComponentInChildren<ItemObject>().Item;
-
+        else Body = null;
 
     }
 }
