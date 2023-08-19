@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Models.Inventory
 {
+    [SerializeField]
     public class Slot : MonoBehaviour
     {
         public bool ActiveItem;

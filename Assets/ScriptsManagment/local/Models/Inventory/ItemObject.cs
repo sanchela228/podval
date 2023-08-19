@@ -57,6 +57,11 @@ namespace Models.Inventory
         public void OnDrag(PointerEventData eventData)
         {
             _transform.position = _diference;
+
+            if (rayHit.transform != null)
+            {
+                Debug.Log(rayHit.collider.name);
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -86,14 +91,12 @@ namespace Models.Inventory
                 }
                 else
                 {
-                    if (!rayHitSlot.IsActive())
+                    if (!rayHitSlot.IsActive() && !defaultParent.GetComponent<Slot>().IsActive())
                     {
                         var targetObject = rayHitSlot.GetComponentInChildren<ItemObject>();
 
-                        Debug.Log(targetObject);
                         targetObject.transform.SetParent(defaultParent);
                         targetObject.transform.localPosition = pos;
-
 
                         this.justSwapWithOutInterface(rayHitSlot, defaultParent.GetComponent<Slot>(), targetObject);
 
