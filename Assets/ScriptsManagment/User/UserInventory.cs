@@ -30,11 +30,11 @@ public class UserInventory : MonoBehaviour
     void Update()
     {
         if ( HeadSlot.transform.childCount > 0 )
-        {
             Head = (Head) HeadSlot.GetComponentInChildren<ItemObject>().Item;
-        }
+
+        if (BodySlot.transform.childCount > 0)
+            Body = (Body) BodySlot.GetComponentInChildren<ItemObject>().Item;
 
 
-        
     }
 }
