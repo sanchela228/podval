@@ -18,9 +18,6 @@ public class UserInventory : MonoBehaviour
     public Body Body;
 
 
-
-
-
     void Start()
     {
         
