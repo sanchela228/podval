@@ -22,7 +22,18 @@ public class UserController : MonoBehaviour
         movment.y = Input.GetAxisRaw("Vertical");
 
 
+
+
+
         // tests
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            GameObject map = (GameObject) Collector.Get("MapObject", true);
+
+            //Debug.Log(test);
+            Debug.Log(map);
+        }
+
         if (Input.GetKeyUp(KeyCode.K))
         {
             var ResourcesItem = Resources.Load<GameObject>("Prefabs/MapObject");

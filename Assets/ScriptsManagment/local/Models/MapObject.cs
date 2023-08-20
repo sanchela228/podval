@@ -15,7 +15,7 @@ namespace Models
         {
             var spriteComponent = this.GetComponent<SpriteRenderer>();
 
-            if (spriteComponent != null && spriteComponent.sprite == null && Environment.Icon != null)
+            if (spriteComponent != null && spriteComponent.sprite == null && Environment != null && Environment.Icon != null)
             {
                 spriteComponent.sprite = Environment.Icon;
             }

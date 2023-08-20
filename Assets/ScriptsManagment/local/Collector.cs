@@ -1,18 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Models;
+using UnityEngine;
 
-public class Collector
+public static class Collector
 {
-    Dictionary<string, CollectorObject> Collection = new Dictionary<string, CollectorObject>()
+    public enum Types { Prefab, ScriptableObject }
+
+    private static Dictionary<string, CollectorObject> Collection = new Dictionary<string, CollectorObject>()
     {
-        ["64d2feee-a529-4b13-ac53-e10adbb50c28"] = new CollectorObject() 
-        { 
+        // prefabs ----------------------
+        ["MapObject"] = new CollectorObject("Prefabs/MapObject", Collector.Types.Prefab),
+
+        // ScriptableObject -------------
+        ["64d2feee-a529-4b13-ac53-e10adbb50c28"] = new CollectorObject("ScriptableObject/Data/Items/Armor", Collector.Types.ScriptableObject),
         
-        }
     };
 
-    public CollectorObject Get(string Guid, bool Copy = true)
+    public static object Get(string key, bool Copy = true, Vector3 pos = new Vector3())
     {
-        return Collection[Guid];
+        if (Collection.ContainsKey(key))
+        {
+            if (!Copy) return Resources.Load(Collection[key].Path);
+
+            switch( Collection[key].Type )
+            {
+                case Types.ScriptableObject:
+                    return UnityEngine.Object.Instantiate(
+                        Resources.Load(Collection[key].Path)
+                    );
+
+                case Types.Prefab: 
+                    return UnityEngine.Object.Instantiate(
+                        Resources.Load(Collection[key].Path),
+                        pos,
+                        Quaternion.identity
+                    );
+
+                default: return null;   
+            }
+        }
+        else throw new Exception("Cannot find this key in collection");
     }
 }
