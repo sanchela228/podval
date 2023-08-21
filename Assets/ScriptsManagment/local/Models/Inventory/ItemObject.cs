@@ -154,6 +154,12 @@ namespace Models.Inventory
                 newSlot.addItemFromSlot(Item);
                 oldSlot.removeItemFromSlot(Item);
             }
+
+            if (!newSlot.GetSyncInterface() && !oldSlot.GetSyncInterface())
+            {
+                newSlot.addItemFromSlot(Item);
+                oldSlot.removeItemFromSlot(Item);
+            }
             
         }
 
