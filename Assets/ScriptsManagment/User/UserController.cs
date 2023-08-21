@@ -28,10 +28,10 @@ public class UserController : MonoBehaviour
         // tests
         if (Input.GetKeyUp(KeyCode.L))
         {
-            GameObject map = (GameObject) Collector.Get("MapObject", true);
+            //GameObject map = (GameObject) Collector.Get("MapObject", true);
 
             //Debug.Log(test);
-            Debug.Log(map);
+            //Debug.Log(map);
         }
 
         if (Input.GetKeyUp(KeyCode.K))

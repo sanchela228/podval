@@ -47,6 +47,16 @@ namespace Controllers
             return prefab;
         }
 
+        public static void CloseInteractiveInterface()
+        {
+            var UI = ListUI.Find(b => b.name == "InterectiveUI");
+
+            if (UI.transform.childCount > 0) 
+                UnityEngine.Object.Destroy(UI.transform.GetChild(0).gameObject);
+
+            UI.SetActive(false);
+        }
+
         public static void PutItemsInInterface(GameObject Interface, List<Models.Item> Items)
         {
             var ResourcesItem = Resources.Load<GameObject>("Prefabs/Item");    
@@ -72,9 +82,6 @@ namespace Controllers
                     }
                 }
             }
-
-
-
         }
     }
 }

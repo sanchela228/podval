@@ -1,3 +1,5 @@
+using Controllers;
+using Models.Environments;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -108,6 +110,21 @@ namespace Models.Inventory
                         _transform.SetParent(defaultParent);
                     }
                 }
+            }
+            else if (rayHit.transform != null && rayHit.collider.name == "backMaskUI")
+            {
+                GameObject drop = (GameObject) Collector.Get("MapObject", _diference);
+                Drop envir = (Drop) Collector.Get("b30ea009-c3f3-4c32-86d6-bbe7a2525beb");
+                envir.Items.Add(Item);
+
+                drop.GetComponent<MapObject>().Environment = envir;
+                defaultParent.GetComponent<Slot>().removeItemFromSlot(Item);
+                
+                if (defaultParent.GetComponent<Slot>().transform.childCount > 0)
+                    UnityEngine.Object.Destroy(defaultParent.GetComponent<Slot>().transform.GetChild(0).gameObject);
+
+               // defaultParent.GetComponentInParent<SyncInterfaceWithMapObject>().mapObject.Environment
+               // if ()
             }
             else
             {

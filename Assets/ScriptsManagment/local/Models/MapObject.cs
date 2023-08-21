@@ -1,3 +1,4 @@
+using Controllers;
 using Models.Environments;
 using Models.Inventory;
 using System;
@@ -24,6 +25,20 @@ namespace Models
         private void OnMouseDown()
         {
             Environment.Click(this);
+        }
+
+        private void Update()
+        {
+            if (Environment != null && Environment.DestroyMe)
+            {
+                if (Environment is Drop) InterfaceController.CloseInteractiveInterface();
+                Destroy();
+            }
+        }
+
+        public void Destroy()
+        {
+            Destroy(this.gameObject);
         }
 
         public void InstantiateElement()

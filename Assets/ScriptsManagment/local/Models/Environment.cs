@@ -11,6 +11,7 @@ namespace Models
     {
         public string Name;
         public Sprite Icon;
+        public bool DestroyMe;
 
         [TextArea]
         public string Description;
