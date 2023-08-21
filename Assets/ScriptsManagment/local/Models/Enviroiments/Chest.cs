@@ -41,7 +41,7 @@ namespace Models.Environments
             float dist = Vector3.Distance(_mapObject.transform.position, GameObject.Find("MainPlayer").transform.position);
 
             if (dist > 60 && Controllers.InterfaceController.ListUI.Find(b => b.name == "InterectiveUI")) 
-                Controllers.InterfaceController.CloseAllInterfaces();
+                Controllers.InterfaceController.CloseInteractiveInterface();
         }
     }
 }   

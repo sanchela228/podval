@@ -27,18 +27,26 @@ namespace Models.Environments
 
         public override void Click(MapObject _mapObject)
         {
-            var _interface = Controllers.InterfaceController.ToggleInteractiveUI(Interface);
+            float dist = Vector3.Distance(_mapObject.transform.position, GameObject.Find("MainPlayer").transform.position);
 
-            if (_interface != null)
-                _interface.GetComponent<Controllers.SyncInterfaceWithMapObject>().mapObject = _mapObject;
+            if (dist <= 60)
+            {
+                var _interface = Controllers.InterfaceController.ToggleInteractiveUI(Interface);
 
-            if (Items.Count > 0 && _interface != null) 
-                Controllers.InterfaceController.PutItemsInInterface(_interface, Items);
+                if (_interface != null)
+                    _interface.GetComponent<Controllers.SyncInterfaceWithMapObject>().mapObject = _mapObject;
+
+                if (Items.Count > 0 && _interface != null)
+                    Controllers.InterfaceController.PutItemsInInterface(_interface, Items);
+            }
         }
 
         public override void UpdatePerFrame(MapObject _mapObject, string v = null)
         {
-            // nothing
+            float dist = Vector3.Distance(_mapObject.transform.position, GameObject.Find("MainPlayer").transform.position);
+
+            if (dist > 60 && Controllers.InterfaceController.ListUI.Find(b => b.name == "InterectiveUI"))
+                Controllers.InterfaceController.CloseInteractiveInterface();
         }
     }
 }
