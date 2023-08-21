@@ -17,27 +17,38 @@ public static class Collector
         
     };
 
-    public static object Get(string key, bool Copy = true, Vector3 pos = new Vector3())
+    public static object Get(string key, bool Copy = true)
     {
         if (Collection.ContainsKey(key))
         {
             if (!Copy) return Resources.Load(Collection[key].Path);
 
-            switch( Collection[key].Type )
+            return UnityEngine.Object.Instantiate(
+                Resources.Load(Collection[key].Path)
+            );
+        }
+        else throw new Exception("Cannot find this key in collection");
+    }
+
+    public static object Get(string key, Vector3 pos = new Vector3())
+    {
+        if (Collection.ContainsKey(key))
+        {
+            switch (Collection[key].Type)
             {
                 case Types.ScriptableObject:
                     return UnityEngine.Object.Instantiate(
                         Resources.Load(Collection[key].Path)
                     );
 
-                case Types.Prefab: 
+                case Types.Prefab:
                     return UnityEngine.Object.Instantiate(
                         Resources.Load(Collection[key].Path),
                         pos,
                         Quaternion.identity
                     );
 
-                default: return null;   
+                default: return null;
             }
         }
         else throw new Exception("Cannot find this key in collection");
