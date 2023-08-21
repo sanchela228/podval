@@ -4,19 +4,21 @@ using Models.Inventory;
 
 namespace Controllers
 {
-    public class InterfaceController
+    public static class InterfaceController
     {
         public static List<GameObject> ListUI = new List<GameObject>();
-
-        InterfaceController()
-        {
-
-        }
 
         public static void LoadUIItem(GameObject UI)
         {
             ListUI.Add(UI);
             UI.SetActive(false);
+        }
+
+        public static void CloseAllInterfaces()
+        {
+            CloseInteractiveInterface();
+
+            ListUI.ForEach(UI => UI.SetActive(false));  
         }
 
         public static void ToggleUIActive(GameObject UI)
@@ -28,9 +30,10 @@ namespace Controllers
         public static GameObject ToggleInteractiveUI(GameObject interactiveInterface)
         {
             GameObject prefab = null;
-
             GameObject interfaceMain = ListUI.Find(b => b.name == "InterectiveUI");
-            ToggleUIActive(interfaceMain);
+
+            if (interfaceMain.activeSelf == false) ToggleUIActive(interfaceMain);
+            else UnityEngine.Object.Destroy(interfaceMain.transform.GetChild(0).gameObject);
 
             if (interfaceMain.activeSelf)
             {

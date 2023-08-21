@@ -18,8 +18,8 @@ namespace Models
 
         public abstract void Click(MapObject _mapObject);
 
-        public abstract void Change<T>(T item, string v = null);
+        public abstract void Change<T>(T i, string v = null);
 
-        
+        public abstract void UpdatePerFrame(MapObject _mapObject, string v = null);
     }
 }

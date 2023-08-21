@@ -29,6 +29,8 @@ namespace Models
 
         private void Update()
         {
+            Environment.UpdatePerFrame(this);
+
             if (Environment != null && Environment.DestroyMe)
             {
                 if (Environment is Drop) InterfaceController.CloseInteractiveInterface();

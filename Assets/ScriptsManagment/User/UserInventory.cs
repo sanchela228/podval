@@ -1,4 +1,5 @@
-﻿using Models;
+﻿using Controllers;
+using Models;
 using Models.Inventory;
 using Models.Items;
 using System.Collections;
@@ -26,6 +27,13 @@ public class UserInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        { 
+            InterfaceController.CloseAllInterfaces();
+        }
+
+
+
         if ( HeadSlot.transform.childCount > 0 )
             Head = (Head) HeadSlot.GetComponentInChildren<ItemObject>().Item;
         else Head = null;

@@ -35,5 +35,10 @@ namespace Models.Environments
             if (Items.Count > 0 && _interface != null) 
                 Controllers.InterfaceController.PutItemsInInterface(_interface, Items);
         }
+
+        public override void UpdatePerFrame(MapObject _mapObject, string v = null)
+        {
+            // nothing
+        }
     }
 }

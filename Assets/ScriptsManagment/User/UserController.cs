@@ -21,10 +21,6 @@ public class UserController : MonoBehaviour
         movment.x = Input.GetAxisRaw("Horizontal");
         movment.y = Input.GetAxisRaw("Vertical");
 
-
-
-
-
         // tests
         if (Input.GetKeyUp(KeyCode.L))
         {
