@@ -14,15 +14,22 @@ public class UserController : MonoBehaviour
 
     Vector2 movment;
 
+    public Health Health = new Health();
 
     void Update()
     {
         movment.x = Input.GetAxisRaw("Horizontal");
         movment.y = Input.GetAxisRaw("Vertical");
 
-
-
         // tests
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            //GameObject map = (GameObject) Collector.Get("MapObject", true);
+
+            //Debug.Log(test);
+            //Debug.Log(map);
+        }
+
         if (Input.GetKeyUp(KeyCode.K))
         {
             var ResourcesItem = Resources.Load<GameObject>("Prefabs/MapObject");
@@ -75,6 +82,5 @@ public class UserController : MonoBehaviour
         if (direction == 0 || direction == 2 || direction == -2) speed = moveSpeed / 1.2;
 
         rbUser.MovePosition(rbUser.position + (movment * (float)speed * Time.fixedDeltaTime));
-        
     }
 }
