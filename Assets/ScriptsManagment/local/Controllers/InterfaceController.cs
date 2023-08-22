@@ -32,20 +32,38 @@ namespace Controllers
             GameObject prefab = null;
             GameObject interfaceMain = ListUI.Find(b => b.name == "InterectiveUI");
 
-            if (interfaceMain.activeSelf == false) ToggleUIActive(interfaceMain);
-            else UnityEngine.Object.Destroy(interfaceMain.transform.GetChild(0).gameObject);
-
             if (interfaceMain.activeSelf)
             {
+                if (interactiveInterface.gameObject.name + "(Clone)" != interfaceMain.transform.GetChild(0).gameObject.name)
+                {
+                    UnityEngine.Object.Destroy(interfaceMain.transform.GetChild(0).gameObject);
+
+                    prefab = UnityEngine.Object.Instantiate<GameObject>(
+                        interactiveInterface,
+                        new Vector3(0, 0, 0),
+                        Quaternion.identity
+                    );
+
+                    prefab.transform.SetParent(interfaceMain.transform, false);
+                }
+                else
+                {
+                    ToggleUIActive(interfaceMain);
+                    UnityEngine.Object.Destroy(interfaceMain.transform.GetChild(0).gameObject);
+                }
+            }
+            else
+            {
+                ToggleUIActive(interfaceMain);
+
                 prefab = UnityEngine.Object.Instantiate<GameObject>(
-                    interactiveInterface,
-                    new Vector3(0, 0, 0),
-                    Quaternion.identity
-                );
+                   interactiveInterface,
+                   new Vector3(0, 0, 0),
+                   Quaternion.identity
+               );
 
                 prefab.transform.SetParent(interfaceMain.transform, false);
             }
-            else UnityEngine.Object.Destroy(interfaceMain.transform.GetChild(0).gameObject);
             
             return prefab;
         }
