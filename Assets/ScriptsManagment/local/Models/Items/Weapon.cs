@@ -10,15 +10,17 @@ namespace Models.Items
         public enum TypeHit { Projectile, Melee }
 
         public Skill Skill;
+        public Sprite hitSprite;
+
+        public TypeHit Typehit;
 
         public int Damage;
         public int countProjectiles = 1;
         public int sizeProjectiles = 10;
         public int distanceProjectiles = 10;
-        public TypeHit Typehit;
-        public Sprite hitSprite;
+        public int speedProjectiles = 10;
 
-        public void Hit(Vector3 direction)
+        public void Hit(Vector3 direction, Vector3 start)
         {
             switch (Typehit) 
             {
@@ -27,8 +29,13 @@ namespace Models.Items
                     GameObject Hit = (GameObject) Collector.Get("Hit", direction);
 
                     Hit.GetComponent<SpriteRenderer>().sprite = hitSprite;
-                    Hit.GetComponent<RectTransform>().sizeDelta = new Vector2(sizeProjectiles, 20);
+                    Hit.GetComponent<SpriteRenderer>().size = new Vector2(sizeProjectiles, 10);
+                    Hit.GetComponent<RectTransform>().sizeDelta = new Vector2(sizeProjectiles, 10);
 
+                    float angle = Mathf.Atan2(direction.y - start.y, direction.x - start.x) * Mathf.Rad2Deg;
+
+
+                    Hit.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
 
                     break;

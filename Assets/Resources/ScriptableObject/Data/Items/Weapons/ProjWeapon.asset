@@ -18,8 +18,10 @@ MonoBehaviour:
   _isUserProperty: 1
   Type: {fileID: 11400000, guid: b9ce47ff2d4006e4883e9cbcf2ea5b4f, type: 2}
   Description: dm
+  Skill: {fileID: 0}
+  hitSprite: {fileID: 21300000, guid: b9210ecd8bb9f3943a0c7e7df237fc85, type: 3}
+  Typehit: 0
   Damage: 12
   countProjectiles: 1
   sizeProjectiles: 10
-  sizeDistance: 10
-  Typehit: 0
+  distanceProjectiles: 10

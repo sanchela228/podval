@@ -76,17 +76,16 @@ public class UserController : MonoBehaviour
     void FixedUpdate()
     {
         Movment();
-        
     }
 
     protected void UserLeftClick()
     {
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-            var test = camera.ScreenToWorldPoint(Input.mousePosition);
-
-            GetComponent<UserInventory>().Weapon?.Hit(test);
+            GetComponent<UserInventory>().Weapon?.Hit(
+                Camera.main.ScreenToWorldPoint(Input.mousePosition), 
+                rbUser.position
+            );
         }
 
     }
