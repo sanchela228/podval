@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class UserController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class UserController : MonoBehaviour
 
     Vector2 movment;
 
-    public Health Health = new Health();
+    public Health Health = new();
 
     void Update()
     {
@@ -24,10 +25,10 @@ public class UserController : MonoBehaviour
         // tests
         if (Input.GetKeyUp(KeyCode.L))
         {
-            //GameObject map = (GameObject) Collector.Get("MapObject", true);
+            // GameObject map = (GameObject) Collector.Get("MapObject", true);
 
-            //Debug.Log(test);
-            //Debug.Log(map);
+            // Debug.Log(test);
+            // Debug.Log(map);
         }
 
         if (Input.GetKeyUp(KeyCode.K))
@@ -51,8 +52,8 @@ public class UserController : MonoBehaviour
                 Resources.Load<Head>("ScriptableObject/Data/Items/Head")
             );
 
-            Body objectHBody = UnityEngine.Object.Instantiate<Body>(
-                Resources.Load<Body>("ScriptableObject/Data/Items/Armor")
+            Weapon objectHBody = UnityEngine.Object.Instantiate<Weapon>(
+                Resources.Load<Weapon>("ScriptableObject/Data/Items/Weapons/ProjWeapon")
             );
 
             objectHBody.Id = Guid.NewGuid().ToString();
@@ -63,15 +64,31 @@ public class UserController : MonoBehaviour
             prefab.GetComponent<MapObject>().Environment = objectscript;
 
 
-            //Debug.Log(objectscript);
+            // Debug.Log(objectscript);
         }
 
-           
+
+        UserLeftClick();
+
+
     }
 
     void FixedUpdate()
     {
         Movment();
+        
+    }
+
+    protected void UserLeftClick()
+    {
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            Camera camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            var test = camera.ScreenToWorldPoint(Input.mousePosition);
+
+            GetComponent<UserInventory>().Weapon?.Hit(test);
+        }
+
     }
 
     protected void Movment()
@@ -81,6 +98,6 @@ public class UserController : MonoBehaviour
 
         if (direction == 0 || direction == 2 || direction == -2) speed = moveSpeed / 1.2;
 
-        rbUser.MovePosition(rbUser.position + (movment * (float)speed * Time.fixedDeltaTime));
+        rbUser.MovePosition(rbUser.position + (movment * (float) speed * Time.fixedDeltaTime));
     }
 }

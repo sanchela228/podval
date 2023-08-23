@@ -449,6 +449,14 @@ PrefabInstance:
       propertyPath: m_CullTransparentMesh
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4361093713499340491, guid: 30a43268bd195344884c6609c3199b60, type: 3}
+      propertyPath: Type
+      value: 
+      objectReference: {fileID: 11400000, guid: b9ce47ff2d4006e4883e9cbcf2ea5b4f, type: 2}
+    - target: {fileID: 4361093713499340491, guid: 30a43268bd195344884c6609c3199b60, type: 3}
+      propertyPath: ItemObject
+      value: 
+      objectReference: {fileID: 11400000, guid: e53301fe288852a48ac931b135d099cc, type: 2}
     - target: {fileID: 4470638223442210690, guid: 30a43268bd195344884c6609c3199b60, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

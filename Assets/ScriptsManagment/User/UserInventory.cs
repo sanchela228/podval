@@ -19,6 +19,9 @@ public class UserInventory : MonoBehaviour
     public GameObject BodySlot;
     public Body Body;
 
+    public GameObject WeaponSlot;
+    public Weapon Weapon;
+
 
     void Start()
     {
@@ -49,6 +52,10 @@ public class UserInventory : MonoBehaviour
         if (BodySlot.transform.childCount > 0)
             Body = (Body) BodySlot.GetComponentInChildren<ItemObject>().Item;
         else Body = null;
+
+        if (WeaponSlot.transform.childCount > 0)
+            Weapon = (Weapon) WeaponSlot.GetComponentInChildren<ItemObject>().Item;
+        else Weapon = null;
 
 
     }

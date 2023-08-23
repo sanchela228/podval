@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Models;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public static class Collector
@@ -11,12 +12,14 @@ public static class Collector
     {
         // prefabs ----------------------
         ["MapObject"] = new CollectorObject("Prefabs/MapObject", Collector.Types.Prefab),
+        ["Hit"] = new CollectorObject("Prefabs/Hit", Collector.Types.Prefab),
 
         // ScriptableObject -------------
         ["64d2feee-a529-4b13-ac53-e10adbb50c28"] = new CollectorObject("ScriptableObject/Data/Items/Armor", Collector.Types.ScriptableObject),
         ["7d38ddb5-7ecb-4df6-aa96-4e51adf701b4"] = new CollectorObject("ScriptableObject/Data/Items/Head", Collector.Types.ScriptableObject),
         ["b30ea009-c3f3-4c32-86d6-bbe7a2525beb"] = new CollectorObject("ScriptableObject/Data/Environments/DropItem", Collector.Types.ScriptableObject),
         ["d5d37dcb-c6ec-4865-916e-e56b615e11e3"] = new CollectorObject("ScriptableObject/Data/Environments/GayChest", Collector.Types.ScriptableObject),
+
     };
 
     public static object Get(string key)

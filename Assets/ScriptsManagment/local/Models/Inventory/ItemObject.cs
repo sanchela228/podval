@@ -72,42 +72,46 @@ namespace Models.Inventory
 
             if (rayHit.transform != null && rayHit.collider.CompareTag("SlotForItem"))
             {
-                Slot rayHitSlot = rayHit.transform.GetComponent<Slot>();
-
-                if (rayHitSlot.IsEmpty())
-                {
-                    if (rayHitSlot.IsActive())
-                    {
-                        if (Item._isUserProperty)
-                        {
-                            if (rayHitSlot.Type == Item.Type) this.swapParentSlotOnEndDrag(rayHitSlot, defaultParent.GetComponent<Slot>());
-                            else _transform.SetParent(defaultParent);
-                        }
-                        else _transform.SetParent(defaultParent);
-
-                    }
-                    else
-                    {
-                        this.swapParentSlotOnEndDrag(rayHitSlot, defaultParent.GetComponent<Slot>());
-                    }
-                }
+                if (defaultParent == rayHit.transform) _transform.SetParent(defaultParent);
                 else
                 {
-                    if (!rayHitSlot.IsActive() && !defaultParent.GetComponent<Slot>().IsActive())
+                    Slot rayHitSlot = rayHit.transform.GetComponent<Slot>();
+
+                    if (rayHitSlot.IsEmpty())
                     {
-                        var targetObject = rayHitSlot.GetComponentInChildren<ItemObject>();
+                        if (rayHitSlot.IsActive())
+                        {
+                            if (Item._isUserProperty)
+                            {
+                                if (rayHitSlot.Type == Item.Type) this.swapParentSlotOnEndDrag(rayHitSlot, defaultParent.GetComponent<Slot>());
+                                else _transform.SetParent(defaultParent);
+                            }
+                            else _transform.SetParent(defaultParent);
 
-                        targetObject.transform.SetParent(defaultParent);
-                        targetObject.transform.localPosition = pos;
-
-                        this.justSwapWithOutInterface(rayHitSlot, defaultParent.GetComponent<Slot>(), targetObject);
-
-                        _transform.SetParent(rayHit.transform);
+                        }
+                        else
+                        {
+                            this.swapParentSlotOnEndDrag(rayHitSlot, defaultParent.GetComponent<Slot>());
+                        }
                     }
                     else
                     {
-                        /// poka default potom swap if type ==
-                        _transform.SetParent(defaultParent);
+                        if (!rayHitSlot.IsActive() && !defaultParent.GetComponent<Slot>().IsActive())
+                        {
+                            var targetObject = rayHitSlot.GetComponentInChildren<ItemObject>();
+
+                            targetObject.transform.SetParent(defaultParent);
+                            targetObject.transform.localPosition = pos;
+
+                            this.justSwapWithOutInterface(rayHitSlot, defaultParent.GetComponent<Slot>(), targetObject);
+
+                            _transform.SetParent(rayHit.transform);
+                        }
+                        else
+                        {
+                            /// poka default potom swap if type ==
+                            _transform.SetParent(defaultParent);
+                        }
                     }
                 }
             }

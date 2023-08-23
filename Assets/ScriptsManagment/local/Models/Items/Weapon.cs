@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using UnityEditor;
 using UnityEngine;
 
 namespace Models.Items
@@ -8,21 +9,29 @@ namespace Models.Items
     {
         public enum TypeHit { Projectile, Melee }
 
-        public ISkill Skill;
+        public Skill Skill;
 
         public int Damage;
-        public int countProjectiles;
+        public int countProjectiles = 1;
+        public int sizeProjectiles = 10;
+        public int distanceProjectiles = 10;
         public TypeHit Typehit;
+        public Sprite hitSprite;
 
-        public void Hit()
+        public void Hit(Vector3 direction)
         {
             switch (Typehit) 
             {
-                case TypeHit.Projectile: 
-                    
-                    
-                    
-                break;
+                case TypeHit.Projectile:
+                    direction.z = 2;
+                    GameObject Hit = (GameObject) Collector.Get("Hit", direction);
+
+                    Hit.GetComponent<SpriteRenderer>().sprite = hitSprite;
+                    Hit.GetComponent<RectTransform>().sizeDelta = new Vector2(sizeProjectiles, 20);
+
+
+
+                    break;
 
                 case TypeHit.Melee: 
                     

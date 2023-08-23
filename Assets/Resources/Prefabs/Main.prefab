@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4361093713499340491}
   - component: {fileID: 3170001787733102627}
   m_Layer: 5
-  m_Name: Wepon
+  m_Name: Weapon
   m_TagString: SlotForItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActiveItem: 1
   Type: {fileID: 11400000, guid: f4c24f70f762b0f4196e78ac7bfd7ab7, type: 2}
-  ItemObject: {fileID: 0}
+  ItemObject: {fileID: 11400000, guid: e53301fe288852a48ac931b135d099cc, type: 2}
 --- !u!61 &3170001787733102627
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1984,6 +1984,8 @@ MonoBehaviour:
   Head: {fileID: 0}
   BodySlot: {fileID: 1289881152925225691}
   Body: {fileID: 0}
+  WeaponSlot: {fileID: 473042400915903249}
+  Weapon: {fileID: 0}
 --- !u!1 &6961138343806291995
 GameObject:
   m_ObjectHideFlags: 0
