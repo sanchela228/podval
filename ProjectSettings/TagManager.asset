@@ -6,6 +6,8 @@ TagManager:
   tags:
   - SlotForItem
   - Item
+  - MapItem
+  - MapObject
   layers:
   - Default
   - TransparentFX

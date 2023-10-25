@@ -117,11 +117,11 @@ namespace Models.Inventory
             }
             else if (rayHit.transform != null && rayHit.collider.name == "backMaskUI")
             {
-                GameObject drop = (GameObject) Collector.Get("MapObject", _diference);
-                Drop envir = (Drop) Collector.Get("b30ea009-c3f3-4c32-86d6-bbe7a2525beb");
-                envir.Items.Add(Item);
+                GameObject mapItem = (GameObject) Collector.Get("MapItem", _diference);
+                //Drop envir = (Drop) Collector.Get("b30ea009-c3f3-4c32-86d6-bbe7a2525beb");
 
-                drop.GetComponent<MapObject>().Environment = envir;
+                mapItem.GetComponent<MapItem>().Item = Item;
+
                 defaultParent.GetComponent<Slot>().removeItemFromSlot(Item);
                 
                 if (defaultParent.GetComponent<Slot>().transform.childCount > 0)

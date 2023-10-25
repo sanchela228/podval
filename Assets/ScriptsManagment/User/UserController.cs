@@ -4,6 +4,7 @@ using Models.Items;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -17,6 +18,9 @@ public class UserController : MonoBehaviour
 
     public Health Health = new();
 
+    private GameObject[] objectarrays;
+    private GameObject[] objectarrays2;
+
     void Update()
     {
         movment.x = Input.GetAxisRaw("Horizontal");
@@ -29,6 +33,50 @@ public class UserController : MonoBehaviour
 
             // Debug.Log(test);
             // Debug.Log(map);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            objectarrays2 = GameObject.FindGameObjectsWithTag("MapObject");
+            objectarrays = GameObject.FindGameObjectsWithTag("MapItem");
+
+
+            if (objectarrays.Length > 0)
+            {
+                foreach (var item in objectarrays)
+                {
+                    item.GetComponent<MapItem>().TextMesh.SetActive(true);
+                }
+            }
+
+            if (objectarrays2.Length > 0)
+            {
+                foreach (var item in objectarrays2)
+                {
+                    item.GetComponent<MapObject>().TextMesh.SetActive(true);
+                }
+            }
+
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftAlt))
+        {
+            if (objectarrays.Length > 0)
+            {
+                foreach (var item in objectarrays)
+                {
+                    item.GetComponent<MapItem>().TextMesh.SetActive(false);
+                }
+            }
+
+            if (objectarrays2.Length > 0)
+            {
+                foreach (var item in objectarrays2)
+                {
+                    item.GetComponent<MapObject>().TextMesh.SetActive(false);
+                }
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.K))

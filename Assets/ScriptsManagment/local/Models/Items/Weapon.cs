@@ -15,10 +15,10 @@ namespace Models.Items
         public TypeHit Typehit;
 
         public int Damage;
-        public int countProjectiles = 1;
-        public int sizeProjectiles = 10;
-        public int distanceProjectiles = 10;
-        public int speedProjectiles = 10;
+        public int countProjectiles;
+        public int sizeProjectiles;
+        public int distanceProjectiles;
+        public float speedProjectiles;
 
         public void Hit(Vector3 direction, Vector3 start)
         {
@@ -26,7 +26,7 @@ namespace Models.Items
             {
                 case TypeHit.Projectile:
                     direction.z = 2;
-                    GameObject Hit = (GameObject) Collector.Get("Hit", direction);
+                    GameObject Hit = (GameObject) Collector.Get("Hit", start);
 
                     Hit.GetComponent<SpriteRenderer>().sprite = hitSprite;
                     Hit.GetComponent<SpriteRenderer>().size = new Vector2(sizeProjectiles, 10);
@@ -36,6 +36,7 @@ namespace Models.Items
 
 
                     Hit.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                    Hit.GetComponent<Rigidbody2D>().velocity = Hit.transform.right * speedProjectiles;
 
 
                     break;

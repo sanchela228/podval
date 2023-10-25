@@ -4,6 +4,7 @@ using Models.Inventory;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Models
@@ -11,9 +12,12 @@ namespace Models
     public class MapObject : MonoBehaviour
     {
         public Environment Environment;
-        
+        public GameObject TextMesh;
+
         private void OnBecameVisible()
         {
+            TextMesh.transform.GetComponent<TextMeshPro>().text = Environment.Name;
+
             var spriteComponent = this.GetComponent<SpriteRenderer>();
 
             if (spriteComponent != null && spriteComponent.sprite == null && Environment != null && Environment.Icon != null)
@@ -33,7 +37,7 @@ namespace Models
 
             if (Environment != null && Environment.DestroyMe)
             {
-                if (Environment is Drop) InterfaceController.CloseInteractiveInterface();
+                //if (Environment is Drop) InterfaceController.CloseInteractiveInterface();
                 Destroy();
             }
         }

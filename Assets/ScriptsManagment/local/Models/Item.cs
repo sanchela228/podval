@@ -10,6 +10,7 @@ namespace Models
     {
 		public string Name;
 		public Sprite Icon;
+		public Sprite DropIcon;
 		public bool _isUserProperty = false;
 		public TypesItem Type;
 

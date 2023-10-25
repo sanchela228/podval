@@ -23,5 +23,6 @@ MonoBehaviour:
   Typehit: 0
   Damage: 12
   countProjectiles: 1
-  sizeProjectiles: 10
+  sizeProjectiles: 20
   distanceProjectiles: 10
+  speedProjectiles: 20

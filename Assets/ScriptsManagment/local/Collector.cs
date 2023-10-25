@@ -12,6 +12,7 @@ public static class Collector
     {
         // prefabs ----------------------
         ["MapObject"] = new CollectorObject("Prefabs/MapObject", Collector.Types.Prefab),
+        ["MapItem"] = new CollectorObject("Prefabs/MapItem", Collector.Types.Prefab),
         ["Hit"] = new CollectorObject("Prefabs/Hit", Collector.Types.Prefab),
 
         // ScriptableObject -------------
